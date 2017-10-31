@@ -1,10 +1,10 @@
 package viperfile
 
-type Item struct {
+type item struct {
 	Intkey    int
 	Stringkey string
 }
 
-type Configuration struct {
-	Item Item
+type configuration struct {
+	Item item
 }

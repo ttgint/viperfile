@@ -4,7 +4,7 @@ import "testing"
 
 func TestReadLocal(t *testing.T) {
 
-	c := Configuration{}
+	c := configuration{}
 
 	ReadLocal("test_config", &c)
 
