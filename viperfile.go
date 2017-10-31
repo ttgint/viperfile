@@ -9,7 +9,7 @@ import (
 
 // ReadLocal reads a local config file from the top-level directory
 // fileName should be without the extension
-// binding is the struct that the config will be bound
+// binding is a pointer to the struct that the config will be bound
 func ReadLocal(fileName string, binding interface{}) {
 	viper.AddConfigPath("./")
 	viper.SetConfigName(fileName)
