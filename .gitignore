@@ -12,3 +12,15 @@
 
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
+
+# Editors
+.idea/
+.vscode/
+debug
+
+# For Git related files
+*.orig
+*.BASE.*
+*.BACKUP.*
+*.LOCAL.*
+*.REMOTE.*
