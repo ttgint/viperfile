@@ -26,7 +26,7 @@ func ReadLocal(fileName string, binding interface{}) {
 
 	viper.WatchConfig()
 	viper.OnConfigChange(func(e fsnotify.Event) {
-		if viper.Unmarshal(&binding) != nil {
+		if viper.Unmarshal(binding) != nil {
 			log.Println("Failed to read the new config file! Using the old config from memory.")
 		} else {
 			log.Printf("Updated config %+v\n", binding)
