@@ -11,25 +11,21 @@ import (
 // fileName should be without the extension
 // binding is a pointer to the struct that the config will be bound
 func ReadLocal(fileName string, binding interface{}) {
-	viper.AddConfigPath("./")
+	viper.AddConfigPath(".")
 	viper.SetConfigName(fileName)
+	viper.WatchConfig()
+	viper.OnConfigChange(func(e fsnotify.Event) {
+		log.Printf("Updated config %+v\n", binding)
+	})
+
 	err := viper.ReadInConfig()
 
 	if err != nil {
-		panic("Cannot find the config file! It should be included in your top-level directory.")
+		log.Fatalf("Cannot find the config file! It should be included in your top-level directory.")
 	}
 	if viper.Unmarshal(binding) != nil {
-		panic("Unable to read the config file!")
+		log.Fatalf("Unable to read the config file!")
 	}
 
 	log.Printf("Using config %+v\n", binding)
-
-	viper.WatchConfig()
-	viper.OnConfigChange(func(e fsnotify.Event) {
-		if viper.Unmarshal(binding) != nil {
-			log.Println("Failed to read the new config file! Using the old config from memory.")
-		} else {
-			log.Printf("Updated config %+v\n", binding)
-		}
-	})
 }
