@@ -3,6 +3,7 @@ package viperfile
 import (
 	"log"
 
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
@@ -12,8 +13,6 @@ import (
 func ReadLocal(fileName string, binding interface{}) {
 	viper.AddConfigPath(".")
 	viper.SetConfigName(fileName)
-	viper.WatchConfig()
-
 	err := viper.ReadInConfig()
 
 	if err != nil {
@@ -24,4 +23,13 @@ func ReadLocal(fileName string, binding interface{}) {
 	}
 
 	log.Printf("Using config %+v\n", binding)
+
+	viper.WatchConfig()
+	viper.OnConfigChange(func(e fsnotify.Event) {
+		if viper.Unmarshal(binding) != nil {
+			log.Println("Failed to read the new config file! Using the old config from memory.")
+		} else {
+			log.Printf("Updated config %+v\n", binding)
+		}
+	})
 }

@@ -56,10 +56,10 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
   name = "github.com/spf13/viper"
   packages = ["."]
-  revision = "8ef37cbca71638bf32f3d5e194117d4cb46da163"
+  revision = "25b30aa063fc18e48662b86996252eabdcf2f0c7"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -71,7 +71,7 @@
   branch = "master"
   name = "golang.org/x/text"
   packages = ["internal/gen","internal/triegen","internal/ucd","transform","unicode/cldr","unicode/norm"]
-  revision = "6eab0e8f74e86c598ec3b6fad4888e0c11482d48"
+  revision = "7d4e23b25beca3bc3b804ab134f0b12b4ca909d1"
 
 [[projects]]
   branch = "v2"
@@ -82,6 +82,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "c3909bc5c1e88d8f2f4e92dff82fcd6d707049ff8d1a6d200bfaac8b6ed709c4"
+  inputs-digest = "e42cc51e4937a6204bdb8ccee20b19183eda03ef176e761ae898b41274d388ab"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -23,4 +23,4 @@
 
 [[constraint]]
   name = "github.com/spf13/viper"
-  branch = "master"
+  version = "1.0.0"
