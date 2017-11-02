@@ -3,7 +3,6 @@ package viperfile
 import (
 	"log"
 
-	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
@@ -14,9 +13,6 @@ func ReadLocal(fileName string, binding interface{}) {
 	viper.AddConfigPath(".")
 	viper.SetConfigName(fileName)
 	viper.WatchConfig()
-	viper.OnConfigChange(func(e fsnotify.Event) {
-		log.Printf("Updated config %+v\n", binding)
-	})
 
 	err := viper.ReadInConfig()
 
